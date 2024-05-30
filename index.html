@@ -7,17 +7,25 @@
       font-family: 'Courier New', monospace; /* All text in Courier New */
       padding: 20px;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       height: 100vh;
       margin: 0;
+      background-color: #f0f0f0; /* Light grey background */
+    }
+    h1 {
+      margin-bottom: 20px; /* Space between title and text box */
     }
     input[type="text"] {
-      width: 100%; /* Full width of its container */
-      padding: 8px; /* Padding for better readability */
-      font-family: 'Courier New', monospace; /* Ensures font consistency */
-      font-size: 16px; /* Slightly larger font for better visibility */
+      width: 90%; /* Adjusted for better mobile responsiveness */
+      padding: 12px; /* Larger padding for better tap targets */
+      font-size: 18px; /* Larger font size for better readability */
+      margin-bottom: 20px; /* Space between text box and link */
       box-sizing: border-box; /* Includes padding and border in width calculation */
+    }
+    a {
+      color: #0000EE; /* Standard link color */
+      text-decoration: none; /* No underline */
     }
     #response {
       margin-top: 20px;
@@ -26,8 +34,10 @@
   </style>
 </head>
 <body>
+  <h1>Write it down.</h1>
   <form id="textForm" onsubmit="submitText(); return false;">
     <input type="text" id="contentBox" placeholder="Enter your text here...">
+    <a href="https://docs.google.com/document/d/10IE8bDO7HatG1Rt1YBNGGM5wifOj0KBK8-_CWLor5WQ/" target="_blank">See past entries</a>
     <p id="response"></p>
   </form>
   <script>
