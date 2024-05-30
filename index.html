@@ -4,32 +4,30 @@
   <title>Submit Text</title>
   <style>
     body {
-      font-family: 'Courier New', monospace; /* All text in Courier New */
+      font-family: 'Courier New', monospace;
       padding: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       height: 100vh;
       margin: 0;
-      background-color: #f0f0f0; /* Light grey background */
+      background-color: #f0f0f0;
     }
     h1 {
-      margin-bottom: 20px; /* Space between title and text box */
+      margin-bottom: 20px;
     }
     input[type="text"] {
-      width: 90%; /* Adjusted for better mobile responsiveness */
-      padding: 12px; /* Larger padding for better tap targets */
-      font-size: 18px; /* Larger font size for better readability */
-      margin-bottom: 20px; /* Space between text box and link */
-      box-sizing: border-box; /* Includes padding and border in width calculation */
+      width: 90%;
+      padding: 12px;
+      font-size: 18px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
     }
     a {
-      color: #0000EE; /* Standard link color */
-      text-decoration: none; /* No underline */
-    }
-    #response {
-      margin-top: 20px;
-      color: green;
+      color: #0000EE;
+      text-decoration: none;
+      display: block; /* Ensures the link is on a new line */
+      margin-top: 10px; /* Adds some space above the link */
     }
   </style>
 </head>
@@ -38,7 +36,6 @@
   <form id="textForm" onsubmit="submitText(); return false;">
     <input type="text" id="contentBox" placeholder="Enter your text here...">
     <a href="https://docs.google.com/document/d/10IE8bDO7HatG1Rt1YBNGGM5wifOj0KBK8-_CWLor5WQ/" target="_blank">See past entries</a>
-    <p id="response"></p>
   </form>
   <script>
     function submitText() {
@@ -51,14 +48,9 @@
         },
         body: 'content=' + encodeURIComponent(content)
       }).then(response => {
-        console.log('Success:', response);
-        document.getElementById('response').textContent = 'Text submitted successfully!';
         document.getElementById('contentBox').value = ''; // Clear the text box after submission
       })
-      .catch(error => {
-        console.error('Error:', error);
-        document.getElementById('response').textContent = 'Failed to submit text.';
-      });
+      .catch(error => console.error('Error:', error));
     }
   </script>
 </body>
