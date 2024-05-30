@@ -25,10 +25,17 @@
 </head>
 <body>
   <form id="textForm" onsubmit="submitText(); return false;">
-    <textarea id="contentBox" placeholder="Enter your text here..."></textarea>
+    <textarea id="contentBox" placeholder="Enter your text here..." onkeydown="handleKeyDown(event)"></textarea>
     <p id="response"></p>
   </form>
   <script>
+    function handleKeyDown(event) {
+      if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault(); // Prevent the default action to stop entering a new line
+        submitText();
+      }
+    }
+
     function submitText() {
       var content = document.getElementById('contentBox').value;
       fetch('https://script.google.com/macros/s/AKfycbzSF4Pq6sNlMy3FBouGbYza7EOiTTEH5cH4ofdAuzoJ2KM1GgPSEIed93v-dE7dHhaUfg/exec', {
